@@ -1,0 +1,30 @@
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+
+note over server
+code 304 is used to tell
+browser to use stored 
+representation as if
+it were payload of code 200
+end note
+
+server->browser: HTTP status code 304
+
+note over browser
+browser retrieves
+content from cache
+end note
+
+browser->browser: GET /exampleapp/spa
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server->browser: HTTP status code 304
+browser->browser: GET /exampleapp/spa.js
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server->browser: HTTP status code 304
+browser->browser: GET /exampleapp/data.json
+
+note over browser
+notes are now
+displayed on browser
+end note
